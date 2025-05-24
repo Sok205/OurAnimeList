@@ -1,3 +1,6 @@
+"""
+Django models for the main app.
+"""
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -40,6 +43,9 @@ class Anime(models.Model):
 
     def __str__(self):
         return self.title
+
+    def calculate_average_rating(self):
+        return self.average_rating / self.rating_count if self.rating_count > 0 else 0.00
 
 
 class AnimeGenre(models.Model):
